@@ -4,7 +4,6 @@
 `include "scoreboard.sv"
 `include "generator.sv"
 `include "environment.sv"
-
 module johnson_counter_tb;
     bit clk, reset;
     logic [3:0] out;
@@ -20,14 +19,10 @@ module johnson_counter_tb;
     end
     johnson_counter_env env;
     initial begin
-        // Instantiate the environment
         env = new(intf.driver, intf.monitor);
-
-        // Drive reset and start environment
         reset = 1;
         #10 reset = 0;
         env.run();
-
-        #200 $finish; 
+        #200 $finish
     end
 endmodule
